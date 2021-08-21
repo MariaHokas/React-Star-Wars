@@ -3,9 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 
 import { FilmItem } from "../FilmItem";
 import { useSortableData } from "../../Helpers";
+import { options } from "../../Service";
 
 const useStyles = makeStyles({
   root: {
@@ -38,16 +41,28 @@ export const FilmContent = ({ data }) => {
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
-  function goToNextPage() {
+  const goToNextPage = () => {
     setPage((page) => page + 1);
-  }
+  };
 
-  function goToPreviousPage() {
+  const goToPreviousPage = () => {
     setPage((page) => page - 1);
-  }
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setFilmsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <Container className={classes.root}>
+      {/* Added ability to select how many items are shown in one page 
+        So that the user can use UI with a fewer clicks if desired */}
+      <Select value={filmsPerPage} onChange={handleChangeRowsPerPage}>
+        {options.map((option) => (
+          <MenuItem value={option.value}>{option.label}</MenuItem>
+        ))}
+      </Select>
       <Button
         type="button"
         onClick={() => requestSort("Year")}
