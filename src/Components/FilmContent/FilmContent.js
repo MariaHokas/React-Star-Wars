@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -27,12 +27,25 @@ const useStyles = makeStyles({
 export const FilmContent = ({ data }) => {
   const classes = useStyles();
   const { items, requestSort, sortConfig } = useSortableData(data.films);
+  const [page, setPage] = useState(0);
+  const [filmsPerPage, setFilmsPerPage] = useState(10);
+  const pageCount = Math.ceil(items.length / filmsPerPage);
+
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return;
     }
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
+
+  function goToNextPage() {
+    setPage((page) => page + 1);
+  }
+
+  function goToPreviousPage() {
+    setPage((page) => page - 1);
+  }
+
   return (
     <Container className={classes.root}>
       <Button
@@ -42,7 +55,6 @@ export const FilmContent = ({ data }) => {
       >
         Year
       </Button>
-
       <Button
         color="primary"
         type="button"
@@ -51,15 +63,28 @@ export const FilmContent = ({ data }) => {
       >
         Title
       </Button>
-      <div>
-        <Grid container spacing={3}>
-          {items.map((item) => (
+      <Grid container spacing={3}>
+        {items
+          .slice(page * filmsPerPage, page * filmsPerPage + filmsPerPage)
+          .map((item) => (
             <Grid item xs={12} md={6} lg={3} zeroMinWidth key={item.imdbID}>
               <FilmItem film={item} />
             </Grid>
           ))}
-        </Grid>
-      </div>
+      </Grid>
+      <Grid>
+        <Button type="button" onClick={goToPreviousPage} disabled={page === 0}>
+          previous
+        </Button>
+        {/* Added "page count" and "page" word  
+      so the user can clearly see what the number means. */}
+        <p>
+          Page: {page + 1} of {pageCount}
+        </p>
+        <Button type="button" onClick={goToNextPage} disabled={page === 9}>
+          next
+        </Button>
+      </Grid>
     </Container>
   );
 };
