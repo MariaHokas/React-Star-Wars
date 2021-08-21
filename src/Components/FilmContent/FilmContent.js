@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import { Button } from "@material-ui/core";
+import ArrowUpwardOutlinedIcon from "@material-ui/icons/ArrowUpwardOutlined";
+import { IconButton } from "@material-ui/core";
 
 import { FilmItem } from "../FilmItem";
 import { useSortableData } from "../../Helpers";
 import { Sorting } from "../Sorting";
+import { Pagination } from "../Pagination";
 
 const useStyles = makeStyles({
   root: {
@@ -52,6 +54,10 @@ export const FilmContent = ({ data }) => {
     setPage(0);
   };
 
+  const goToTopOfThePage = () => {
+    window["scrollTo"]({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Container className={classes.root}>
       <Sorting
@@ -70,21 +76,21 @@ export const FilmContent = ({ data }) => {
           ))}
       </Grid>
       <Grid>
-        <Button type="button" onClick={goToPreviousPage} disabled={page === 0}>
-          previous
-        </Button>
-        {/* Added "page count" and "page" word  
-      so the user can clearly see what the number means. */}
-        <p>
-          Page: {page + 1} of {pageCount}
-        </p>
-        <Button
-          type="button"
-          onClick={goToNextPage}
-          disabled={page === pageCount - 1}
-        >
-          next
-        </Button>
+        <Pagination
+          goToPreviousPage={goToPreviousPage}
+          page={page}
+          pageCount={pageCount}
+          goToNextPage={goToNextPage}
+        />
+
+        {/* Added go to top button so the user doesn't have to scroll up by themself */}
+        <IconButton>
+          <ArrowUpwardOutlinedIcon
+            color="primary"
+            onClick={goToTopOfThePage}
+            className={classes.root}
+          />
+        </IconButton>
       </Grid>
     </Container>
   );
