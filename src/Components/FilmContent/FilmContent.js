@@ -3,12 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
 
 import { FilmItem } from "../FilmItem";
 import { useSortableData } from "../../Helpers";
-import { options } from "../../Service";
+import { Sorting } from "../Sorting";
 
 const useStyles = makeStyles({
   root: {
@@ -49,40 +47,24 @@ export const FilmContent = ({ data }) => {
     setPage((page) => page - 1);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeItemsPerPage = (event) => {
     setFilmsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   return (
     <Container className={classes.root}>
-      {/* Added ability to select how many items are shown in one page 
-        So that the user can use UI with a fewer clicks if desired */}
-      <Select value={filmsPerPage} onChange={handleChangeRowsPerPage}>
-        {options.map((option) => (
-          <MenuItem value={option.value}>{option.label}</MenuItem>
-        ))}
-      </Select>
-      <Button
-        type="button"
-        onClick={() => requestSort("Year")}
-        className={getClassNamesFor("Year")}
-      >
-        Year
-      </Button>
-      <Button
-        color="primary"
-        type="button"
-        onClick={() => requestSort("Title")}
-        className={getClassNamesFor("Title")}
-      >
-        Title
-      </Button>
+      <Sorting
+        filmsPerPage={filmsPerPage}
+        handleChangeItemsPerPage={handleChangeItemsPerPage}
+        requestSort={requestSort}
+        getClassNamesFor={getClassNamesFor}
+      />
       <Grid container spacing={3}>
         {items
           .slice(page * filmsPerPage, page * filmsPerPage + filmsPerPage)
           .map((item) => (
-            <Grid item xs={12} md={6} lg={3} zeroMinWidth key={item.imdbID}>
+            <Grid item xs={12} md={4} lg={3} zeroMinWidth key={item.imdbID}>
               <FilmItem film={item} />
             </Grid>
           ))}
@@ -96,7 +78,11 @@ export const FilmContent = ({ data }) => {
         <p>
           Page: {page + 1} of {pageCount}
         </p>
-        <Button type="button" onClick={goToNextPage} disabled={page === 9}>
+        <Button
+          type="button"
+          onClick={goToNextPage}
+          disabled={page === pageCount - 1}
+        >
           next
         </Button>
       </Grid>
