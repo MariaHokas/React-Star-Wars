@@ -4,7 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## What is the use of this Repo
 
-This project created with create.react-app. React Query is used for fetch data and Material-UI to create responsive application.  
+This project created with create-react-app. React Query is used for fetching data and Material-UI to create responsive application.
+
+The project demonstrates the following
+
+1. Creating Hook Components in React
+2. Making GET HTTP calls
+3. Communicating between parent and child components
+4. Making responsive webpage
 
 
 ## Cloning and Running the Application in local
