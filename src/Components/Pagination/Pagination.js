@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 
 export const Pagination = ({
   goToPreviousPage,
@@ -8,15 +8,18 @@ export const Pagination = ({
   goToNextPage,
 }) => {
   return (
-    <>
+    <Grid
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
+    >
       <Button type="button" onClick={goToPreviousPage} disabled={page === 0}>
         previous
       </Button>
       {/* Added "page count" and "page" word  
       so the user can clearly see what the number means. */}
-      <p>
-        Page: {page + 1} of {pageCount}
-      </p>
+      Page: {page + 1} of {pageCount}
       <Button
         type="button"
         onClick={goToNextPage}
@@ -24,6 +27,6 @@ export const Pagination = ({
       >
         next
       </Button>
-    </>
+    </Grid>
   );
 };

@@ -1,32 +1,20 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
-  root: {
-    "& .MuiCardMedia-img": {
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-    },
-  },
-  typeArea: {
-    height: 50,
-  },
-  media: {
-    minHeight: 300,
-  },
-});
+import { useStyles } from "./styles";
 
 export const FilmItem = ({ film }) => {
   const classes = useStyles();
   return (
     <>
-      <Card className={classes.root} alignItems="center">
+      <Card
+        className={classes.root}
+        justifyContent="center"
+        alignItems="center"
+      >
         <CardMedia
           className="poster-image"
           src={film.Poster}

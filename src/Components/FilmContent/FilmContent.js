@@ -65,12 +65,21 @@ export const FilmContent = ({ data }) => {
         handleChangeItemsPerPage={handleChangeItemsPerPage}
         requestSort={requestSort}
         getClassNamesFor={getClassNamesFor}
+        sortConfig={sortConfig}
       />
       <Grid container spacing={3}>
         {items
           .slice(page * filmsPerPage, page * filmsPerPage + filmsPerPage)
           .map((item) => (
-            <Grid item xs={12} md={4} lg={3} zeroMinWidth key={item.imdbID}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              zeroMinWidth
+              key={item.imdbID}
+            >
               <FilmItem film={item} />
             </Grid>
           ))}
@@ -82,8 +91,7 @@ export const FilmContent = ({ data }) => {
           pageCount={pageCount}
           goToNextPage={goToNextPage}
         />
-
-        {/* Added go to top button so the user doesn't have to scroll up by themself */}
+        {/* Added "go to top" button so the user doesn't have to scroll up by themself */}
         <IconButton>
           <ArrowUpwardOutlinedIcon
             color="primary"
