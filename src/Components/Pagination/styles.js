@@ -7,14 +7,15 @@ export const useStyles = makeStyles({
     marginTop: 30,
     position: "sticky",
   },
-  typeArea: {
-    padding: "6px 16px",
-    marginRight: 1,
-  },
   button: {
     textTransform: "initial",
     fontSize: 16,
     color: "white",
+    width: 130,
     background: "Black",
+    "&:hover": {
+      color: "white",
+      background: "#23395d",
+    },
   },
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Grid } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
@@ -14,7 +14,6 @@ export const Sorting = ({
   filmsPerPage,
   handleChangeItemsPerPage,
   requestSort,
-  getClassNamesFor,
   sortConfig,
 }) => {
   const classes = useStyles();
@@ -69,8 +68,7 @@ export const Sorting = ({
         <Button
           type="button"
           onClick={() => requestSort("Year")}
-          className={getClassNamesFor("Year")}
-          style={{ fontSize: 16, paddingBottom: "3px" }}
+          className={classes.iconButton}
           startIcon={changeIconYear()}
         >
           Year
@@ -78,11 +76,7 @@ export const Sorting = ({
         <Button
           type="button"
           onClick={() => requestSort("Title")}
-          className={getClassNamesFor("Title")}
-          style={{
-            fontSize: 16,
-            paddingBottom: "3px",
-          }}
+          className={classes.iconButton}
           startIcon={changeIconTitle()}
           focusVisible
         >

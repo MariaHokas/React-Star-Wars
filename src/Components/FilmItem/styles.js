@@ -7,6 +7,9 @@ export const useStyles = makeStyles({
       flexDirection: "column",
       justifyContent: "space-between",
     },
+    textAlign: "center",
+    height: 500,
+    boxShadow: "none",
   },
   typeArea: {
     height: 50,
@@ -14,12 +17,23 @@ export const useStyles = makeStyles({
   media: {
     minHeight: 300,
   },
+  posterImageBackCard: {
+    display: "block",
+    maxHeight: 380,
+    minHeight: 380,
+    "@media (max-width: 420px)": {
+      display: "inline",
+      maxHeight: "auto",
+      minHeight: "auto",
+    },
+  },
   posterImage: {
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
     width: "100%",
-    height: "auto",
+    height: "auto !important",
+    maxHeight: 380,
   },
   posterMissingImage: {
     opacity: "0.3",
@@ -27,6 +41,13 @@ export const useStyles = makeStyles({
     marginLeft: "auto",
     marginRight: "auto",
     width: "100%",
-    height: "auto",
+    height: "auto !important",
+    maxHeight: 380,
+  },
+  posterTextBack: {
+    display: "block",
+    "@media (max-width: 420px)": {
+      display: "100%",
+    },
   },
 });

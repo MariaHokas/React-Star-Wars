@@ -11,4 +11,13 @@ export const useStyles = makeStyles({
     padding: "6px 16px",
     marginRight: 1,
   },
+  iconButton: {
+    fontSize: 16,
+    paddingBottom: "3px",
+    fontWeight: "normal",
+    "&:hover, &:focus": {
+      fontSize: 20,
+      fontWeight: 900,
+    },
+  },
 });

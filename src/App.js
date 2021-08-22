@@ -3,23 +3,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { Header } from "./Components/Header/";
 import { FilmsPage } from "./Pages";
+import { theme } from "./Helpers";
 const queryClient = new QueryClient();
-const theme = createTheme({
-  typography: {
-    fontFamily: ["BenchNine", "sans-serif"].join(","),
-  },
-  palette: {
-    primary: {
-      main: "#ff0000",
-      "&:hover": {
-        backgroundColor: "#8F00FF",
-      },
-    },
-    secondary: {
-      main: "#003366",
-    },
-  },
-});
+
 function App() {
   return (
     <>

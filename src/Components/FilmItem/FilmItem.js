@@ -15,22 +15,28 @@ export const FilmItem = ({ film }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <CardMedia
-          className={classes.posterImage}
-          src={film.Poster}
-          component="img"
-          onError={(e) => {
-            e.currentTarget.src =
-              "https://cdn.pixabay.com/photo/2021/05/08/09/08/sunset-6237951_960_720.jpg";
-            e.currentTarget.className = classes.posterMissingImage;
-          }}
-          alt={film.Title}
-        />
-        <CardContent justifyContent="center" alignItems="center">
+        <CardContent
+          className={classes.posterImageBackCard}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <CardMedia
+            className={classes.posterImage}
+            src={film.Poster}
+            component="img"
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://cdn.pixabay.com/photo/2021/05/08/09/08/sunset-6237951_960_720.jpg";
+              e.currentTarget.className = classes.posterMissingImage;
+            }}
+            alt={film.Title}
+          />
+        </CardContent>
+        <CardContent className={classes.posterTextposterTextBack}>
           <Typography variant="h6" color="textSecondary" component="p">
             {film.Year}
           </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography variant="h5" component="h2">
             {film.Title}
           </Typography>
         </CardContent>
