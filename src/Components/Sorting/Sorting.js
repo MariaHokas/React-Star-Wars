@@ -25,7 +25,9 @@ export const Sorting = ({
       return <ExpandMoreIcon />;
     else if (sorting.key === "Year" && sorting.direction === "descending")
       return <ExpandLessIcon />;
-    else return <UnfoldMoreIcon />;
+    else {
+      return <UnfoldMoreIcon />;
+    }
   };
 
   const changeIconTitle = () => {
@@ -77,8 +79,12 @@ export const Sorting = ({
           type="button"
           onClick={() => requestSort("Title")}
           className={getClassNamesFor("Title")}
-          style={{ fontSize: 16, paddingBottom: "3px" }}
+          style={{
+            fontSize: 16,
+            paddingBottom: "3px",
+          }}
           startIcon={changeIconTitle()}
+          focusVisible
         >
           Title
         </Button>

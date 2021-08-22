@@ -14,4 +14,19 @@ export const useStyles = makeStyles({
   media: {
     minHeight: 300,
   },
+  posterImage: {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "100%",
+    height: "auto",
+  },
+  posterMissingImage: {
+    opacity: "0.3",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "100%",
+    height: "auto",
+  },
 });

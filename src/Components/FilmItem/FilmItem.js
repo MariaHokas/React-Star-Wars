@@ -16,17 +16,17 @@ export const FilmItem = ({ film }) => {
         alignItems="center"
       >
         <CardMedia
-          className="poster-image"
+          className={classes.posterImage}
           src={film.Poster}
           component="img"
           onError={(e) => {
             e.currentTarget.src =
               "https://cdn.pixabay.com/photo/2021/05/08/09/08/sunset-6237951_960_720.jpg";
-            e.currentTarget.className = "poster-missing";
+            e.currentTarget.className = classes.posterMissingImage;
           }}
           alt={film.Title}
         />
-        <CardContent>
+        <CardContent justifyContent="center" alignItems="center">
           <Typography variant="h6" color="textSecondary" component="p">
             {film.Year}
           </Typography>
