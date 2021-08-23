@@ -1,7 +1,7 @@
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-import { Header } from "./Components/Header/";
+import { ThemeProvider } from "@material-ui/core/styles";
+
 import { FilmsPage } from "./Pages";
 import { theme } from "./Helpers";
 const queryClient = new QueryClient();
@@ -11,7 +11,6 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
-          <Header />
           <FilmsPage />
         </QueryClientProvider>
       </ThemeProvider>
