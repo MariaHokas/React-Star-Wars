@@ -26,7 +26,7 @@ export const Sorting = ({
         justifyContent="flex-end"
         alignItems="flex-end"
       >
-        <Typography className={classes.typeArea} variant="p">
+        <Typography className={classes.typeArea} variant="body1">
           Showing:
         </Typography>
         {/* Added ability to select how many items are shown in one page 
@@ -36,11 +36,14 @@ export const Sorting = ({
           onChange={handleChangeItemsPerPage}
           IconComponent={ExpandMoreIcon}
         >
-          {options.map((option) => (
-            <MenuItem value={option.value}> {option.label}</MenuItem>
+          {options.map((option, index) => (
+            <MenuItem key={index} value={option.value}>
+              {" "}
+              {option.label}
+            </MenuItem>
           ))}
         </Select>
-        <Typography className={classes.typeArea} variant="p">
+        <Typography className={classes.typeArea} variant="body1">
           sort:
         </Typography>
         {/* Icon are bit different than in layout. 

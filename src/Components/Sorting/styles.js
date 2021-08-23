@@ -6,6 +6,9 @@ export const useStyles = makeStyles({
     fontSize: 16,
     fontFamily: ["BenchNine", "sans-serif"].join(","),
     marginBottom: 25,
+    "@media (max-width: 376px)": {
+      justifyContent: "center",
+    },
   },
   typeArea: {
     padding: "6px 16px",

@@ -10,16 +10,8 @@ export const FilmItem = ({ film }) => {
   const classes = useStyles();
   return (
     <>
-      <Card
-        className={classes.root}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <CardContent
-          className={classes.posterImageBackCard}
-          justifyContent="center"
-          alignItems="center"
-        >
+      <Card className={classes.root}>
+        <CardContent className={classes.posterImageBackCard}>
           <CardMedia
             className={classes.posterImage}
             src={film.Poster}
