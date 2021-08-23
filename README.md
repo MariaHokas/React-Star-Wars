@@ -16,41 +16,34 @@ The project demonstrates the following
 
 ## Cloning and Running the Application in local
 
-Clone the project into local
-
-Install all packages with npm or yarn. Go into the project folder and type the following command to install all packages. Recomended to use yarn.
+Clone the project into local computer.
 
 ```bash
-npm install
+git clone https://github.com/MariaHokas/React-Star-Wars.git
+```
+
+Install all packages with npm or yarn package manager. Go into the project root folder and type the following command to install all packages. Recommended to use yarn.
+
+```bash
+yarn install
 ```
 Or
 
 ```bash
-yarn install
+npm install
 ```
 
 In order to run the application Type the following command
 
 ```bash
-npm start
+yarn start
 ```
 Or
 
 ```bash
-yarn start
+npm start
 ```
 
 
-## Other Available Scripts
 
-In the project directory, you can run:
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
