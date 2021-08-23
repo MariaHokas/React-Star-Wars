@@ -3,6 +3,9 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import { Button } from "@material-ui/core";
+import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { FilmItem } from "../FilmItem";
 import { useSortableData } from "../../Helpers";
@@ -15,7 +18,26 @@ export const FilmContent = ({ data }) => {
   const { items, requestSort, sortConfig } = useSortableData(data.films);
   const [page, setPage] = useState(0);
   const [filmsPerPage, setFilmsPerPage] = useState(10);
+  const config = { ...sortConfig };
   const pageCount = Math.ceil(items.length / filmsPerPage);
+
+  const changeIcon = (name) => {
+    if (config.key === name)
+      return config.direction === "ascending" ? (
+        <ExpandMoreIcon />
+      ) : (
+        <ExpandLessIcon />
+      );
+    else return <UnfoldMoreIcon />;
+  };
+
+  const changeClass = (name) =>
+    config.key === name ? classes.iconButtonInUse : classes.iconButton;
+
+  const handleChangeItemsPerPage = (event) => {
+    setFilmsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   const goToNextPage = () => {
     setPage((page) => page + 1);
@@ -23,11 +45,6 @@ export const FilmContent = ({ data }) => {
 
   const goToPreviousPage = () => {
     setPage((page) => page - 1);
-  };
-
-  const handleChangeItemsPerPage = (event) => {
-    setFilmsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   const goToTopOfThePage = () => {
@@ -42,6 +59,8 @@ export const FilmContent = ({ data }) => {
           handleChangeItemsPerPage={handleChangeItemsPerPage}
           requestSort={requestSort}
           sortConfig={sortConfig}
+          changeIcon={changeIcon}
+          changeClass={changeClass}
         />
         <Grid container spacing={3}>
           {items

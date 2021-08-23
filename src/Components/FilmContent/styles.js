@@ -28,4 +28,18 @@ export const useStyles = makeStyles({
     color: "#f00c93",
     float: "right",
   },
+  iconButton: {
+    fontSize: 16,
+    paddingBottom: "3px",
+    fontWeight: "bold",
+    "&:hover, &:focus": {
+      fontSize: 20,
+      fontWeight: 900,
+    },
+  },
+  iconButtonInUse: {
+    paddingBottom: "3px",
+    fontSize: 20,
+    fontWeight: 900,
+  },
 });

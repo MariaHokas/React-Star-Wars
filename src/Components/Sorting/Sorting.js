@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Grid } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
-import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 import { options } from "../../Service";
 import { useStyles } from "./styles";
@@ -14,28 +12,10 @@ export const Sorting = ({
   filmsPerPage,
   handleChangeItemsPerPage,
   requestSort,
-  sortConfig,
+  changeClass,
+  changeIcon,
 }) => {
   const classes = useStyles();
-  const sorting = { ...sortConfig };
-
-  const changeIconYear = () => {
-    if (sorting.key === "Year" && sorting.direction === "ascending")
-      return <ExpandMoreIcon />;
-    else if (sorting.key === "Year" && sorting.direction === "descending")
-      return <ExpandLessIcon />;
-    else {
-      return <UnfoldMoreIcon />;
-    }
-  };
-
-  const changeIconTitle = () => {
-    if (sorting.key === "Title" && sorting.direction === "ascending")
-      return <ExpandMoreIcon />;
-    else if (sorting.key === "Title" && sorting.direction === "descending")
-      return <ExpandLessIcon />;
-    else return <UnfoldMoreIcon />;
-  };
 
   return (
     <>
@@ -68,17 +48,16 @@ export const Sorting = ({
         <Button
           type="button"
           onClick={() => requestSort("Year")}
-          className={classes.iconButton}
-          startIcon={changeIconYear()}
+          className={changeClass("Year")}
+          startIcon={changeIcon("Year")}
         >
           Year
         </Button>
         <Button
           type="button"
           onClick={() => requestSort("Title")}
-          className={classes.iconButton}
-          startIcon={changeIconTitle()}
-          focusVisible
+          className={changeClass("Title")}
+          startIcon={changeIcon("Title")}
         >
           Title
         </Button>
