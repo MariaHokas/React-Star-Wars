@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import NavigationIcon from "@material-ui/icons/Navigation";
@@ -20,6 +20,10 @@ export const FilmContent = ({ data }) => {
   const [filmsPerPage, setFilmsPerPage] = useState(10);
   const config = { ...sortConfig };
   const pageCount = Math.ceil(items.length / filmsPerPage);
+
+  useEffect(() => {
+    setPage(0);
+  }, [sortConfig]);
 
   const changeIcon = (name) => {
     if (config.key === name)
